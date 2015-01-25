@@ -3,8 +3,8 @@ package ngrams;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-public class EstimateString {
-	public void markovEstimation() {
+public class StringMarkovEstimation {
+	static public void main(String[] args) {
 		Unigram unigram=new Unigram();
 		Bigram bigram=new Bigram();
 		
