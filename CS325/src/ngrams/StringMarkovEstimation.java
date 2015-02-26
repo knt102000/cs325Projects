@@ -3,10 +3,12 @@ package ngrams;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import smoothing.NoSmoothing;
+
 public class StringMarkovEstimation {
 	static public void main(String[] args) {
-		Unigram unigram=new Unigram();
-		Bigram bigram=new Bigram();
+		Unigram unigram=new Unigram(new NoSmoothing());
+		Bigram bigram=new Bigram(new NoSmoothing());
 		
 		try {
 			IOUtils.readUnigrams(unigram, new FileInputStream("1grams.txt"));

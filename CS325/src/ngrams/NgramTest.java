@@ -6,10 +6,12 @@ import java.util.Map.Entry;
 
 import org.junit.Test;
 
+import smoothing.NoSmoothing;
+
 public class NgramTest {
 	@Test
 	public void testUnigram() {
-		Unigram unigram=new Unigram();
+		Unigram unigram=new Unigram(new NoSmoothing());
 		
 		unigram.add("A", 1);
 		unigram.add("B", 4);
@@ -33,7 +35,7 @@ public class NgramTest {
 	
 	@Test
 	public void testBigram() {
-		Bigram bigram=new Bigram();
+		Bigram bigram=new Bigram(new NoSmoothing());
 		
 		bigram.add("A","A1",2);
 		bigram.add("A","A2",3);
