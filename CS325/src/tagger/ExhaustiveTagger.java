@@ -1,7 +1,9 @@
 package tagger;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import utils.DSUtils;
 import cs325.classifier.AbstractClassifier;
@@ -29,14 +31,14 @@ public class ExhaustiveTagger extends AbstractTagger {
 		List<StringFeature> features=getFeatures(words,tags,index);
 		TagList copy;
 		
-		for(Prediction p:getPredictions(features)) {
+		for(Prediction p:getPredictions(features,index+1)) {
 			copy=new TagList(tags);
 			copy.add(p);
 			decodeAux(allTags,words,copy,index+1);
 		}
 	}
 	
-	protected List<Prediction> getPredictions(List<StringFeature> features) {
+	protected List<Prediction> getPredictions(List<StringFeature> features,int num) {
 		return classifier.predict(features);
 	}
 }

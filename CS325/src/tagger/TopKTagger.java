@@ -17,7 +17,12 @@ public class TopKTagger extends ExhaustiveTagger {
 	}
 	
 	@Override
-	protected List<Prediction> getPredictions(List<StringFeature> features) {
+	protected List<Prediction> getPredictions(List<StringFeature> features,int num) {
+		if (num>46) {
+			num=46;
+		}
+		
+		
 		List<Prediction> TopK=new ArrayList<Prediction>();
 		List<Prediction> list=classifier.predict(features);
 		
@@ -29,12 +34,16 @@ public class TopKTagger extends ExhaustiveTagger {
 		int counter=0;
 		
 		for (Prediction key:list) {
+			
+//			counter+=1;
+//			TopK.add(key);
+//			if (counter>=k) break;
 			if (previous.compareTo(key)!=0) {
 				counter+=1;
 				previous=key;
 			}
 			
-			if (counter<k) TopK.add(key); else break;
+			if (counter<num) TopK.add(key); else break;
 		}
 		
 		return TopK;

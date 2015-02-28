@@ -10,12 +10,13 @@ import java.util.regex.Pattern;
 
 import org.junit.Test;
 
+import cs325.classifier.HiddenMarkov;
 import cs325.classifier.NaiveBayes;
 
 public class HW2Test {
 	@Test
 	public void test() {
-		AbstractTagger tagger=new ExhaustiveTagger(new NaiveBayes(0.0001));
+		AbstractTagger tagger=new TopKTagger(new NaiveBayes(0.0001),2);
 		//AbstractTagger tagger=new HMMTagger(0.0001);
 		
 		try {

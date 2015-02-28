@@ -13,7 +13,7 @@ public class TopTagger extends ExhaustiveTagger {
 	}
 	
 	@Override
-	protected List<Prediction> getPredictions(List<StringFeature> features) {
+	protected List<Prediction> getPredictions(List<StringFeature> features,int num) {
 		return DSUtils.getBestList(classifier.predict(features));
 	}
 }
