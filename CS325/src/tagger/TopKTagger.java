@@ -9,7 +9,7 @@ import cs325.classifier.Prediction;
 import cs325.classifier.StringFeature;
 
 public class TopKTagger extends ExhaustiveTagger {
-	final int k;
+	int k;
 	
 	public TopKTagger(AbstractClassifier classifier, int k) {
 		super(classifier);
@@ -18,13 +18,15 @@ public class TopKTagger extends ExhaustiveTagger {
 	
 	@Override
 	protected List<Prediction> getPredictions(List<StringFeature> features,int num) {
-		if (num>46) {
-			num=46;
-		}
-		
 		
 		List<Prediction> TopK=new ArrayList<Prediction>();
 		List<Prediction> list=classifier.predict(features);
+		
+		k=list.size()-num;
+		
+		if (num<=0) {
+			num=1;
+		}
 		
 		Collections.sort(list);
 		Collections.reverse(list);

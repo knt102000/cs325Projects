@@ -31,7 +31,7 @@ public class ExhaustiveTagger extends AbstractTagger {
 		List<StringFeature> features=getFeatures(words,tags,index);
 		TagList copy;
 		
-		for(Prediction p:getPredictions(features,index+1)) {
+		for(Prediction p:getPredictions(features,index)) {
 			copy=new TagList(tags);
 			copy.add(p);
 			decodeAux(allTags,words,copy,index+1);
