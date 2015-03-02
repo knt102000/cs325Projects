@@ -17,6 +17,9 @@ public class HW2Test {
 	@Test
 	public void test() {
 		AbstractTagger tagger=new TopKTagger(new NaiveBayes(0.0001),2);
+		//AbstractTagger tagger=new TopTagger(new NaiveBayes(0.0001));
+		//AbstractTagger tagger=new TopLengthTagger(new NaiveBayes(0.0001));
+		//AbstractTagger tagger=new TopKRangeTagger(new NaiveBayes(0.0001),1,2);
 		//AbstractTagger tagger=new HMMTagger(0.0001);
 		
 		try {
@@ -63,6 +66,8 @@ public class HW2Test {
 		String line;
 		String[] t;
 		
+		int counter=0;
+		
 		while ((line=reader.readLine())!=null) {
 			t=p.split(line);
 			
@@ -75,6 +80,11 @@ public class HW2Test {
 				words.add(t[0]);
 				tags.add(t[1]);
 			}
+			
+			counter+=1;
+			System.out.println("Done: "+counter);
+			System.out.println("Total: "+total);
+			System.out.println("Correct: "+correct);
 		}
 		
 		System.out.printf("%5.2f (%d/%d)\n",100d*correct/total,correct,total);

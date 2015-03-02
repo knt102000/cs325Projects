@@ -18,6 +18,7 @@ public class ExhaustiveTagger extends AbstractTagger {
 	@Override
 	public List<TagList> decode(List<String> words) {
 		List<TagList> allTags=new ArrayList<>();
+		//System.out.println(words.size());
 		decodeAux(allTags,words,new TagList(),0);
 		return DSUtils.getBestList(allTags);
 	}
@@ -30,7 +31,7 @@ public class ExhaustiveTagger extends AbstractTagger {
 		
 		List<StringFeature> features=getFeatures(words,tags,index);
 		TagList copy;
-		
+
 		for(Prediction p:getPredictions(features,index)) {
 			copy=new TagList(tags);
 			copy.add(p);
